@@ -6,11 +6,12 @@ drop table if exists acquisti;
 
 create table prodotti(
 prodotto_id integer primary key auto_increment,
-nome_prodotto varchar(20));
+nome_prodotto varchar(20),
+tipo_di_vino varchar(10));
 
-insert into prodotti(nome_prodotto) value('vino rosso');
-insert into prodotti(nome_prodotto) value('vino bianco');
-insert into prodotti(nome_prodotto) value('rosè');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('barolo','rosso');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('pecorino','bianco');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('ferrari','spumante');
 
 create table utenti(
 utente_id integer primary key auto_increment,
