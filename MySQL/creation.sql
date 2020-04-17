@@ -8,11 +8,16 @@ create table prodotti(
 prodotto_id integer primary key auto_increment,
 nome_prodotto varchar(20));
 
+insert into prodotti(nome_prodotto) value('vino rosso');
+insert into prodotti(nome_prodotto) value('vino bianco');
+insert into prodotti(nome_prodotto) value('rosè');
 
 create table utenti(
 utente_id integer primary key auto_increment,
 nome_utente varchar(10),
 password_utente varchar(10));
+
+insert into utenti(nome_utente,password_utente) value('mariorossi','mrossipw');
 
 create table acquisti(
 acquisto_id integer primary key auto_increment,
