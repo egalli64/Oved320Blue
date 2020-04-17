@@ -1,6 +1,8 @@
-drop table if exist prodotti;
-drop table if exist utenti;
-drop table if exist acquisti;
+use blue;
+
+drop table if exists prodotti;
+drop table if exists utenti;
+drop table if exists acquisti;
 
 create table prodotti(
 prodotto_id integer primary key,
