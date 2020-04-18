@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Userform</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Autenticazione</h1>
+<br>
+<div class="container-fluid" >
+	<div class="row">
+	<div class="col">
+	<h4>SEI UN NUOVO UTENTE? </h4>
+	<hr>
+    <form action="/something" method ="post">
+        <div>
+            Nome Utente: <br><input type="text" name="nomeutente">
+        </div>
+        <div>
+            Password: <br><input type="password" name="pwd" maxlength="30" required>
+        </div>
+        <div>
+            <input type="hidden" name="invisible" value="notShowed">
+        </div>
+        <div>
+            <br><input type="submit" value="Crea un account" />
+        </div>
+     </form>
+     </div>
+     <div class="col">
+     <h4>SEI GIA REGISTRATO? </h4>
+	 <hr>
+     <form action="/something" method ="post">
+        <div>
+            Nome Utente: <br><input type="text" name="nomeutente">
+        </div>
+        <div>
+            Password: <br><input type="password" name="pwd" maxlength="30" required>
+        </div>
+        <div>
+            <input type="hidden" name="invisible" value="notShowed">
+        </div>
+        <div>
+            <br><input type="submit" value="Entra" />
+        </div>
+     </form>
+     </div>
+     </div>
+     </div>
+</body>
+</html>
