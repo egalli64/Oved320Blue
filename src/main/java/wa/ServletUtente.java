@@ -1,7 +1,6 @@
 package wa;
 
 import java.sql.*;
-import java.util.Optional;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
