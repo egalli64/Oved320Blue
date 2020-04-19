@@ -3,10 +3,29 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #0066cc;
+    color: #ff0000;
     font-family:geneva;
     text-align:center;
 }
-.btn-group{
+
+#titleId { 
+	color: #006ddb;
+    font-family:geneva;
+    font-size:165%;
+    text-align:center;
+}
+
+#researchId {
+	color: #0080ff;
+    font-family:geneva;
+    font-size:150%;
+    text-align:center;
+}
+
+#picId { 
+	text-align:center;
+}
+
+#dropId { 
 	text-align:center;
 }
