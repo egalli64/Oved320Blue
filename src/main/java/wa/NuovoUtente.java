@@ -38,17 +38,12 @@ public class NuovoUtente extends HttpServlet {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 		
-		try {
-			Connection conn = Connector.getConnection(); //
-			PreparedStatement ps = conn.prepareStatement(INSERT);
-			ps.setString(1, user);
-			ps.setString(2, password);
-			
+		UtenteDao ud = new UtenteDao();
+		Utente ut = new Utente(user,password);
+		ud.save(ut);
+		
 
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-		RequestDispatcher rs = request.getRequestDispatcher("index.html");
+		RequestDispatcher rs = request.getRequestDispatcher("../jsp/confermaregistrazione.jsp");
 		rs.include(request, response);
 	}
 
