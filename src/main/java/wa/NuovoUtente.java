@@ -43,9 +43,8 @@ public class NuovoUtente extends HttpServlet {
 		Utente ut = new Utente(user,password);
 		dao.save(ut);
 		
-
-		RequestDispatcher rs = request.getRequestDispatcher("/Confermaregistrazione.jsp");
-		rs.include(request, response);
+		RequestDispatcher rs = request.getRequestDispatcher("/confermaregistrazione.jsp");
+		rs.forward(request, response);
 	}
 	}
 
