@@ -1,7 +1,9 @@
 package wa;
 
 import java.sql.*;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +11,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+
+
 
 /**
  * Servlet implementation class ServletUtente
  */
-@WebServlet("/ServletUtente")
+@WebServlet("/html/login")
 public class ServletUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String GET_BY_NAME = "SELECT nome_utente, password_utente FROM utenti WHERE nome_utente = ? and password_utente= ?";
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ServletUtente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -51,31 +49,40 @@ public class ServletUtente extends HttpServlet {
 		return accesso;
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 
 		if (checkUser(user, password) == true) {
-			RequestDispatcher rs = request.getRequestDispatcher("Welcome");
+			HttpSession session = request.getSession();
+			session.setAttribute(user, password);
+			request.setAttribute("user", user);
+			request.setAttribute("password", password);
+			
+			//setting session to expiry in 30 mins
+			session.setMaxInactiveInterval(30*60);
+			Cookie userName = new Cookie("user", user);
+			userName.setMaxAge(30*60);
+			response.addCookie(userName);			
+			RequestDispatcher rs = request.getRequestDispatcher("/AccessoConfermato.jsp");
 			rs.forward(request, response);
 		} else {
-			System.out.println("Username or Password incorrect");
-			RequestDispatcher rs = request.getRequestDispatcher("AccessoConfermato.jsp");
-			rs.include(request, response);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Reception.html");
+			PrintWriter out= response.getWriter();
+			out.println("<font color=red>Username o password errati.</font>");
+			rd.include(request, response);
+			
+			
 		}
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
+
+
+
+
+
+
