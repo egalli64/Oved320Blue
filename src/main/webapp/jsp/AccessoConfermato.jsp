@@ -30,12 +30,10 @@
 	</nav>
  	</div>
  	<div class="col">
- 	<div id="picId">
+ 	<div id="userId">
  	
- 	
-    <p>${user}</p>
-    
-    
+ 	    <p>${user}</p>
+        
     <a href="./Carrello.html">
  	    <img src="../images/carrello.jpg" title="carrello" width="14%" />
  	</a>  

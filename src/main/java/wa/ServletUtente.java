@@ -73,8 +73,7 @@ public class ServletUtente extends HttpServlet {
 			PrintWriter out= response.getWriter();
 			out.println("<font color=red>Username o password errati.</font>");
 			rd.include(request, response);
-			
-			
+
 		}
 
 	}
