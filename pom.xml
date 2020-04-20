@@ -52,4 +52,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <finalName>blue</finalName>
+    </build>
 </project>
