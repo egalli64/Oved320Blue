@@ -8,7 +8,7 @@
 <title>Reception</title>
 </head>
 <body>     
-<%@include  file="../html/Reception.html" %>
+<%@include  file="./index.html" %>
     <c:if test="${user != null}">
         <p>${user}</p>
     </c:if>
