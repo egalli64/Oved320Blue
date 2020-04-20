@@ -58,11 +58,11 @@ public class ServletUtente extends HttpServlet {
 		String password = request.getParameter("password");
 
 		if (checkUser(user, password) == true) {
-			RequestDispatcher rs = request.getRequestDispatcher("Welcome");
+			RequestDispatcher rs = request.getRequestDispatcher("/jsp/AccessoConfermato.jsp");
 			rs.forward(request, response);
 		} else {
 			System.out.println("Username or Password incorrect");
-			RequestDispatcher rs = request.getRequestDispatcher("AccessoConfermato.jsp");
+			RequestDispatcher rs = request.getRequestDispatcher("/html/Userform.html");
 			rs.include(request, response);
 		}
 
