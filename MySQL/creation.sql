@@ -22,7 +22,7 @@ insert into prodotti(nome_prodotto,tipo_di_vino) value('TrentoDoc','spumante');
 
 create table utenti(
 utente_id integer primary key auto_increment,
-nome_utente varchar(20),
+nome_utente varchar(20) unique,
 password_utente varchar(20));
 
 insert into utenti(nome_utente,password_utente) value('mariorossi','mrossipw');
