@@ -10,9 +10,15 @@ prodotto_id integer primary key auto_increment,
 nome_prodotto varchar(20),
 tipo_di_vino varchar(10));
 
-insert into prodotti(nome_prodotto,tipo_di_vino) value('barolo','rosso');
-insert into prodotti(nome_prodotto,tipo_di_vino) value('pecorino','bianco');
-insert into prodotti(nome_prodotto,tipo_di_vino) value('ferrari','spumante');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Bonarda','rosso');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Lambrusco','rosso');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Negroamaro','rosso');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Chardonnay','bianco');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Lugana','bianco');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Vermentino','bianco');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Prosecco','spumante');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('Champagne','spumante');
+insert into prodotti(nome_prodotto,tipo_di_vino) value('TrentoDoc','spumante');
 
 create table utenti(
 utente_id integer primary key auto_increment,
