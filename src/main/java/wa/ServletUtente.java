@@ -40,7 +40,7 @@ public class ServletUtente extends HttpServlet {
            // logger.info("Resource-not-injected Tomcat patch");
             try {
                 Context envContext = (Context) (new InitialContext().lookup("java:/comp/env"));
-                ds = (DataSource) envContext.lookup("jdbc/me");
+                ds = (DataSource) envContext.lookup("jdbc/blue");
             } catch (NamingException ne) {
                 throw new ServletException("Can't resolve JDBC resource", ne);
             }
@@ -70,7 +70,7 @@ public class ServletUtente extends HttpServlet {
 			RequestDispatcher rs = request.getRequestDispatcher("/AccessoConfermato.jsp");
 			rs.forward(request, response);
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Reception.html");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Index.html");
 			PrintWriter out = response.getWriter();
 			out.println("<font color=red>Username o password errati.</font>");
 			rd.include(request, response);
