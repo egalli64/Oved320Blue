@@ -19,6 +19,9 @@ nome_utente varchar(10),
 password_utente varchar(10));
 
 insert into utenti(nome_utente,password_utente) value('mariorossi','mrossipw');
+insert into utenti(nome_utente,password_utente) value('marco','marcopw');
+insert into utenti(nome_utente,password_utente) value('giordano','giordanopw');
+insert into utenti(nome_utente,password_utente) value('alexander','alexanderpw');
 
 create table acquisti(
 acquisto_id integer primary key auto_increment,

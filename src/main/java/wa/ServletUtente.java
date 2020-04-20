@@ -62,7 +62,7 @@ public class ServletUtente extends HttpServlet {
 			rs.forward(request, response);
 		} else {
 			System.out.println("Username or Password incorrect");
-			RequestDispatcher rs = request.getRequestDispatcher("index.html");
+			RequestDispatcher rs = request.getRequestDispatcher("AccessoConfermato.jsp");
 			rs.include(request, response);
 		}
 
