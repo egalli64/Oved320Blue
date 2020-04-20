@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * Servlet implementation class NuovoUtente
  * @author marco
  */
-@WebServlet("/html/nuovo")
+@WebServlet("nuovo")
 public class NuovoUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name = "jdbc/blue")
