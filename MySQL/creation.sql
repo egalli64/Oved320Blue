@@ -1,8 +1,9 @@
 use blue;
 
+drop table if exists acquisti;
 drop table if exists prodotti;
 drop table if exists utenti;
-drop table if exists acquisti;
+
 
 create table prodotti(
 prodotto_id integer primary key auto_increment,
@@ -15,8 +16,8 @@ insert into prodotti(nome_prodotto,tipo_di_vino) value('ferrari','spumante');
 
 create table utenti(
 utente_id integer primary key auto_increment,
-nome_utente varchar(10),
-password_utente varchar(10));
+nome_utente varchar(20),
+password_utente varchar(20));
 
 insert into utenti(nome_utente,password_utente) value('mariorossi','mrossipw');
 insert into utenti(nome_utente,password_utente) value('marco','marcopw');
