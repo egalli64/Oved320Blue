@@ -8,6 +8,6 @@
 </head>
 <body>
 <p> registrazione avvenuta con successo: ${Utente.user}</p>
-<a href="../html/Reception.html">main page</a>
+<a href="./index.html">main page</a>
 </body>
 </html>
