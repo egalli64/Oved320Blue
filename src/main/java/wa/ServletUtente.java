@@ -1,10 +1,13 @@
 package wa;
 
-import java.sql.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
 
 
 
@@ -22,32 +27,25 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/html/login")
 public class ServletUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String GET_BY_NAME = "SELECT nome_utente, password_utente FROM utenti WHERE nome_utente = ? and password_utente= ?";
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	/**
-	 * 
-	 * @author marco query sul database
-	 * 
-	 */
-	public static boolean checkUser(String user, String password) {
-		boolean accesso = false;
-		try {
-			Connection conn = Connector.getConnection(); //
-			PreparedStatement ps = conn.prepareStatement(GET_BY_NAME);
-			ps.setString(1, user);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			accesso = rs.next();
+	@Resource(name = "jdbc/blue")
+	private DataSource ds;
 
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-		return accesso;
-	}
+    @Override
+    public void init() throws ServletException {
+        super.init();
+
+        // resource injection not working in Tomcat latest versions (?!)
+        if (ds == null) {
+           // logger.info("Resource-not-injected Tomcat patch");
+            try {
+                Context envContext = (Context) (new InitialContext().lookup("java:/comp/env"));
+                ds = (DataSource) envContext.lookup("jdbc/me");
+            } catch (NamingException ne) {
+                throw new ServletException("Can't resolve JDBC resource", ne);
+            }
+        }
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -55,33 +53,30 @@ public class ServletUtente extends HttpServlet {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 
-		if (checkUser(user, password) == true) {
+		try (UtenteDao dao = new UtenteDao(ds)) {		
+		
+
+		if (dao.get(user).isPresent()) {
 			HttpSession session = request.getSession();
 			session.setAttribute(user, password);
 			request.setAttribute("user", user);
 			request.setAttribute("password", password);
-			
-			//setting session to expiry in 30 mins
-			session.setMaxInactiveInterval(30*60);
+
+			// setting session to expiry in 30 mins
+			session.setMaxInactiveInterval(30 * 60);
 			Cookie userName = new Cookie("user", user);
-			userName.setMaxAge(30*60);
-			response.addCookie(userName);			
+			userName.setMaxAge(30 * 60);
+			response.addCookie(userName);
 			RequestDispatcher rs = request.getRequestDispatcher("/AccessoConfermato.jsp");
 			rs.forward(request, response);
 		} else {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Reception.html");
-			PrintWriter out= response.getWriter();
+			PrintWriter out = response.getWriter();
 			out.println("<font color=red>Username o password errati.</font>");
 			rd.include(request, response);
-
+		}
 		}
 
 	}
 
 }
-
-
-
-
-
-

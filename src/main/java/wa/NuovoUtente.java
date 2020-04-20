@@ -1,16 +1,17 @@
 package wa;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
+
+
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 
 
@@ -18,11 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class NuovoUtente
  * @author marco
  */
-@WebServlet("/NuovoUtente")
+@WebServlet("/html/nuovo")
 public class NuovoUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String INSERT = "INSERT INTO utenti(nome_utente, password_utente) VALUES (?, ?)";
-       
+	@Resource(name = "jdbc/blue")
+	private DataSource ds;  
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,13 +39,14 @@ public class NuovoUtente extends HttpServlet {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 		
-		UtenteDao ud = new UtenteDao();
+		try (UtenteDao dao = new UtenteDao(ds)){
 		Utente ut = new Utente(user,password);
-		ud.save(ut);
+		dao.save(ut);
 		
 
 		RequestDispatcher rs = request.getRequestDispatcher("../jsp/confermaregistrazione.jsp");
 		rs.include(request, response);
+	}
 	}
 
 	/**
