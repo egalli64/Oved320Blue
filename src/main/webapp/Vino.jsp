@@ -63,30 +63,61 @@
 	</div>
 	<hr>
 
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col"><h1>${nomeVino}</h1></div>
-		</div>
-		
-		<div class="row">
-			<div class="col"><h1>Nome</h1></div>
-			<div class="col"><h1>Prezzo</h1></div>
-			<div class="col"><h1>Anno</h1></div>
-		</div>
-		
-		</div>
-		
 
-		<hr>
-		<div class="col">
-			<div id="dropId">
-				<div class="btn-group"></div>
-				<div class="col">
-					<h1></h1>
-				</div>
+	<div class="container-fluid">
+		<h1>SoulWine presenta: ${vino.nome}</h1>
+
+
+		<div class="row">
+			<div class="col">
+			<c:if test="${vino.nome = Bonarda}">
+				<img src="./images/bonarda.jpg" width=100%>
+				</c:if>
+			<c:if test="${vino.nome = Lambrusco}">
+				<img src="./images/lambrusco.jpg" width=100%>
+				</c:if>	
+				<c:if test="${vino.nome = Negroamaro}">
+				<img src="./images/negroamaro.jpg" width=100%>
+				</c:if>
+			</div>
+			<div class="col">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">/</th>
+							<th scope="col">Specifiche</th>
+						</tr>
+					</thead>
+					<tr>
+						<th scope="row">Tipo</th>
+						<td>${vino.tipo}</td>
+					</tr>
+					<tr>
+						<th scope="row">Anno</th>
+						<td>${vino.anno}</td>
+					</tr>
+					<tr>
+						<th scope="row">Prezzo</th>
+						<td>${vino.prezzo}euro</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<hr>
+	<div class="col">
+		<div id="dropId">
+			<div class="btn-group"></div>
+			<div class="col">
+				<h1></h1>
 			</div>
 		</div>
-		<br>
+	</div>
+	<br>
 </body>
 </html>
