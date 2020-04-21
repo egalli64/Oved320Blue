@@ -2,6 +2,9 @@ body {
 	background-color: #ffffff;
 }
 
+h1{
+	text-align:center;
+}
 #titleId { 
 	color: #006ddb;
     font-family:geneva;
