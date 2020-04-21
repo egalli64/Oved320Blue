@@ -70,7 +70,7 @@ public class ServletUtente extends HttpServlet {
 			RequestDispatcher rs = request.getRequestDispatcher("/AccessoConfermato.jsp");
 			rs.forward(request, response);
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 			PrintWriter out = response.getWriter();
 			out.println("<font color=red>Username o password errati.</font>");
 			rd.include(request, response);

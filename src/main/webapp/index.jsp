@@ -32,21 +32,24 @@
 	</nav>
  	</div>
  	<div class="col">
- 	<c:if test="${user != null}">
-        <p>${user}</p>
-    </c:if>
-    <c:if test="${user = null}">
-        <div id="picId">
-    <a href="./Userform.html">
-         <img src="./images/omino.png" title="user" width="10%" />
-    </a>
-    </div>
-    </c:if>
- 	
+ 	    <c:choose>
+ 	        <c:when test="${user != null}">
+              <div><p>${user}</p></div>
+            </c:when>
+        <c:otherwise>
+            <div id="picId">
+              <a href="./Userform.html">
+              <img src="./images/omino.png" title="user" width="10%" />
+              </a>
+           
     <a href="./html/Carrello.html">
  	    <img src="./images/carrello.jpg" title="carrello" width="14%" />
  	</a>  
-    </div> 
+ 	</div>
+ 	</c:otherwise>
+ 	   </c:choose>
+    </div>
+     
     </div>
   	</div>
 	<hr>
