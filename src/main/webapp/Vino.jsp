@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>attributo nome vino</title>
+<title>ciao ${vino.nome} </title>
+<base href="/blue/">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -70,14 +71,14 @@
 
 		<div class="row">
 			<div class="col">
-			<c:if test="${vino.nome = Bonarda}">
-				<img src="./images/bonarda.jpg" width=100%>
+				<c:if test="${vino.nome = Bonarda}">
+					<img src="./images/bonarda.jpg" width=100%>
 				</c:if>
-			<c:if test="${vino.nome = Lambrusco}">
-				<img src="./images/lambrusco.jpg" width=100%>
-				</c:if>	
+				<c:if test="${vino.nome = Lambrusco}">
+					<img src="./images/lambrusco.jpg" width=100%>
+				</c:if>
 				<c:if test="${vino.nome = Negroamaro}">
-				<img src="./images/negroamaro.jpg" width=100%>
+					<img src="./images/negroamaro.jpg" width=100%>
 				</c:if>
 			</div>
 			<div class="col">
@@ -108,6 +109,7 @@
 
 	</div>
 
+<button type="submit">Aggiungi al carrello</button>
 
 	<hr>
 	<div class="col">
