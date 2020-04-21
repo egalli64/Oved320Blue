@@ -1,7 +1,7 @@
+-- run this as root
 
-drop user blue;
-drop schema blue;
-
+drop user if exists blue;
+drop schema if exists blue;
 
 create user blue identified by 'password'; 
 create schema blue; 
