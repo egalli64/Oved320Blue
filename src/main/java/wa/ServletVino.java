@@ -19,37 +19,43 @@ import javax.sql.DataSource;
  */
 @WebServlet("/ServletVino")
 public class ServletVino extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Resource(name = "jdbc/blue")
-    private DataSource ds;
+	@Resource(name = "jdbc/blue")
+	private DataSource ds;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        String vino = request.getParameter("vino");
+		String parametro = request.getParameter("vino");
 
-        try (VinoDao dao = new VinoDao(ds)) {
-            Optional<Vino> opt = dao.get(vino);
-            if (dao.get(vino).isPresent()) {
-                HttpSession session = request.getSession();
-                session.setAttribute("vino", vino);
-                request.setAttribute("vino", opt);
-                RequestDispatcher rs = request.getRequestDispatcher("/Vino.jsp");
-                rs.forward(request, response);
-            } else {
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-                PrintWriter out = response.getWriter();
-                out.println("<font color=red>vino non trovato.</font>");
-                rd.include(request, response);
-            }
-        }
+		try (VinoDao dao = new VinoDao(ds)) {
+			Optional<Vino> opt = dao.get(parametro);
+			if (opt.isPresent()) {
+				Vino vino = opt.get();
+				HttpSession session = request.getSession();
+				session.setAttribute("nomeVino", parametro);
+				session.setAttribute("vino", vino);
+				request.setAttribute("nome", vino.getNome());
+				request.setAttribute("tipo", vino.getTipo());
+				request.setAttribute("anno", vino.getAnno());
+				request.setAttribute("prezzo", vino.getPrezzo());
 
-    }
+				RequestDispatcher rs = request.getRequestDispatcher("/Vino.jsp");
+				rs.forward(request, response);
+			} else {
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+				PrintWriter out = response.getWriter();
+				out.println("<font color=red>vino non trovato.</font>");
+				rd.include(request, response);
+			}
+		}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }
