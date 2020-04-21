@@ -114,24 +114,24 @@
   	</ol>
   	<div class="carousel-inner">
     <div class="carousel-item active">
-    <img src="./images/Landscape.jpg" class="d-block w-100" width="10%">
+    <img src="images/uva.jpg" class="d-block w-100" width="10%">
     <div class="carousel-caption d-none d-md-block">
-    <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    <h5>LA QUALITA NON E UN OPTIONAL, MA UN MUST</h5>
+        <p>I vigneti di prima qualità di cui provvengono i nostri prodotti sono la dimostrazione della nostra passione </p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="./images/carrello.jpg" class="d-block w-100" width="14%">
+      <img src="images/bottiglie-vino.jpg" class="d-block w-100" width="14%">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h5>INGREDIENTE MAGICO: IL TEMPO</h5>
+        <p>L'invecchiamento consente ai vari prodotti di offrire un autentico risveglio al momento della scoperta</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="./images/omino.png" class="d-block w-100" width="10%">
+      <img src="images/calici.jpg" class="d-block w-100" width="10%">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <h5>FESTEGGIAMO INSIEME</h5>
+        <p>Ogni momento è propizio per degustare e scoprire nuovi sapori</p>
       </div>
     </div>
   </div>
