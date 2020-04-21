@@ -33,16 +33,22 @@
  	</div>
  	<div class="col">
  	    <c:choose>
- 	        <c:when test="${user != null}">
-              <div><p>${user}</p></div>
-            </c:when>
+ 	      <c:when test="${user != null}">
+            <div>
+              <p>${user}</p>
+              <a href="/Carrello.html">
+ 	             <img src="./images/carrello.jpg" title="carrello" width="14%" />
+ 	         </a>  
+ 	      </div>
+ 	      </c:when>
+ 	      
         <c:otherwise>
             <div id="picId">
               <a href="./Userform.html">
               <img src="./images/omino.png" title="user" width="10%" />
               </a>
            
-    <a href="./html/Carrello.html">
+    <a href="/Carrello.html">
  	    <img src="./images/carrello.jpg" title="carrello" width="14%" />
  	</a>  
  	</div>

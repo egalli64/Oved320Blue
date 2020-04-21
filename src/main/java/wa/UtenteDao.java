@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 public class UtenteDao implements Closeable  {
    // private static final Logger logger = LoggerFactory.getLogger(UtenteDao.class);
     private Connection conn;
-	private static final String GET_BY_NAME = "SELECT utente_id, nome_utente, password_utente FROM utenti WHERE nome_utente = ? & password_utente=?";
+	private static final String GET_BY_NAME = "SELECT utente_id, nome_utente, password_utente FROM utenti WHERE nome_utente = ? and password_utente=?";
     private static final String GET_ALL = "SELECT utente_id, nome_utente, password_utente FROM utenti";
     private static final String INSERT = "INSERT INTO utenti(nome_utente, password_utente) VALUES (?, ?)";
     private static final String UPDATE = "UPDATE utenti SET nome_utente = ?, password_utente = ?"
