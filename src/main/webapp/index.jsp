@@ -37,7 +37,7 @@
  	      <c:when test="${user != null}">
             <div>
               <p>${user}</p>
-              <a href="Carrello.html">
+              <a href="Carrello.jsp">
  	             <img src="images/carrello.jpg" title="carrello" width="14%" />
  	         </a>  
  	      </div>
@@ -49,7 +49,7 @@
               <img src="images/omino.png" title="user" width="10%" />
               </a>
            
-    <a href="Carrello.html">
+    <a href="Carrello.jsp">
  	    <img src="images/carrello.jpg" title="carrello" width="14%" />
  	</a>  
  	</div>
