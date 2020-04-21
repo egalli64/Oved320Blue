@@ -71,7 +71,7 @@
 
 		<div class="row">
 			<div class="col">
-				<img src="images/${vino.nome}.jpg" width=30%>
+				<img src="./images/${vino.nome}.jpg" width='30%'>
 			</div>
 			<div class="col">
 				<table class="table table-hover">
