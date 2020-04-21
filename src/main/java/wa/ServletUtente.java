@@ -56,7 +56,7 @@ public class ServletUtente extends HttpServlet {
 		try (UtenteDao dao = new UtenteDao(ds)) {		
 		
 
-		if (dao.get(user).isPresent()) {
+		if (dao.get(user, password).isPresent()) {
 			HttpSession session = request.getSession();
 			session.setAttribute(user, password);
 			request.setAttribute("user", user);
