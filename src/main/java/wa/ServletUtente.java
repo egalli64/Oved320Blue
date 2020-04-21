@@ -67,7 +67,7 @@ public class ServletUtente extends HttpServlet {
 			Cookie userName = new Cookie("user", user);
 			userName.setMaxAge(30 * 60);
 			response.addCookie(userName);
-			RequestDispatcher rs = request.getRequestDispatcher("/AccessoConfermato.jsp");
+			RequestDispatcher rs = request.getRequestDispatcher("/index.jsp");
 			rs.forward(request, response);
 		} else {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
