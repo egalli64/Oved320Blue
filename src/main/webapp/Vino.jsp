@@ -71,15 +71,7 @@
 
 		<div class="row">
 			<div class="col">
-				<c:if test="${vino.nome = Bonarda}">
-					<img src="./images/bonarda.jpg" width=100%>
-				</c:if>
-				<c:if test="${vino.nome = Lambrusco}">
-					<img src="./images/lambrusco.jpg" width=100%>
-				</c:if>
-				<c:if test="${vino.nome = Negroamaro}">
-					<img src="./images/negroamaro.jpg" width=100%>
-				</c:if>
+				<img src="./images/${vino.nome}.jpg" width=300%>
 			</div>
 			<div class="col">
 				<table class="table table-hover">
@@ -99,7 +91,7 @@
 					</tr>
 					<tr>
 						<th scope="row">Prezzo</th>
-						<td>${vino.prezzo}euro</td>
+						<td>${vino.prezzo} euro</td>
 					</tr>
 				</table>
 			</div>
