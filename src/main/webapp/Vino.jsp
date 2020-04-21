@@ -114,7 +114,7 @@
 	<hr>
 	<div class="col">
 		<div id="dropId">
-			<div class="btn-group"></div>
+			<div class="btn-group"></div> 
 			<div class="col">
 				<h1></h1>
 			</div>
