@@ -72,9 +72,9 @@
     Vini Rossi
   	</button>
   	<div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Bonarda</a>
-    <a class="dropdown-item" href="#">Lambrusco</a>
-    <a class="dropdown-item" href="#">Negroamaro</a>
+    <a class="dropdown-item" href="ServletVino?vino=Bonarda">Bonarda</a>
+    <a class="dropdown-item" href="ServletVino?vino=Lambrusco">Lambrusco</a>
+    <a class="dropdown-item" href="ServletVino?vino=Negroamaro">Negroamaro</a>
   	</div>
 	</div>
 	<div class="btn-group">
@@ -83,8 +83,8 @@
   	</button>
   	<div class="dropdown-menu">
     <a class="dropdown-item" href="ServletVino?vino=Chardonnay">Chardonnay</a>
-    <a class="dropdown-item" href="#">Lugana</a>
-    <a class="dropdown-item" href="#">Vermentino</a>
+    <a class="dropdown-item" href="ServletVino?vino=Lugana">Lugana</a>
+    <a class="dropdown-item" href="ServletVino?vino=Vermentino">Vermentino</a>
   	</div>
 	</div>
 	<div class="btn-group">
