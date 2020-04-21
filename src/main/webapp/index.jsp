@@ -82,7 +82,7 @@
     Vini Bianchi
   	</button>
   	<div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Chardonnay</a>
+    <a class="dropdown-item" href="ServletVino?vino=Chardonnay">Chardonnay</a>
     <a class="dropdown-item" href="#">Lugana</a>
     <a class="dropdown-item" href="#">Vermentino</a>
   	</div>
