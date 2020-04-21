@@ -92,9 +92,9 @@
     Spumanti
   	</button>
   	<div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Prosecco</a>
-    <a class="dropdown-item" href="#">Champagne</a>
-    <a class="dropdown-item" href="#">Trento Doc</a>
+    <a class="dropdown-item" href="ServletVino?vino=Prosecco">Prosecco</a>
+    <a class="dropdown-item" href="ServletVino?vino=Champagne">Champagne</a>
+    <a class="dropdown-item" href="ServletVino?vino=Trento Doc">Trento Doc</a>
   	</div>
 	</div>
 	</div>
