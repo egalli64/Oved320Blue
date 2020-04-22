@@ -37,96 +37,103 @@
 					<form class="form-inline"></form>
 				</nav>
 			</div>
-			<div class="col">
-				<c:choose>
-					<c:when test="${user != null}">
-						<div>
-							<p>${user.nome}</p>
-							<a href="Carrello.jsp"> <img src="images/carrello.jpg"
-								title="carrello" width="14%" />
-							</a>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div id="picId">
-							<a href="Userform.html"> <img src="images/omino.png"
-								title="user" width="10%" />
-							</a> <a href="Carrello.jsp"> <img src="images/carrello.jpg"
-								title="carrello" width="14%" />
-							</a>
-						</div>
-					</c:otherwise>
-				</c:choose>
+				<div class="col">
+					<c:choose>
+						<c:when test="${user != null}">
+							<div id="dropId">
+								<div class="btn-group">
+									<button type="button" class="btn btn-secondary dropdown-toggle"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">${user.nome}</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Disconetti</a>
+									</div>
+								</div>
+								<a href="Carrello.jsp"> <img src="images/carrello.jpg"
+									title="carrello" width="14%" />
+								</a>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div id="picId">
+								<a href="Userform.html"> <img src="images/omino.png"
+									title="user" width="10%" />
+								</a> <a href="Carrello.jsp"> <img src="images/carrello.jpg"
+									title="carrello" width="14%" />
+								</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</div>
-	</div>
-	<hr>
+		<hr>
 
 
-	<div class="container-fluid">
-		<h1>SoulWine presenta: ${vino.nome}</h1>
+		<div class="container-fluid">
+			<h1>SoulWine presenta: ${vino.nome}</h1>
 
 
-		<div class="row">
-			<div class="col">
-				<img src="images/${vino.nome}.jpg" width='30%'>
-			</div>
-			<div class="col">
-				<table class="table table-hover">
-					<thead>
+			<div class="row">
+				<div class="col">
+					<img src="images/${vino.nome}.jpg" width='30%'>
+				</div>
+				<div class="col">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">/</th>
+								<th scope="col">Specifiche</th>
+							</tr>
+						</thead>
 						<tr>
-							<th scope="col">/</th>
-							<th scope="col">Specifiche</th>
+							<th scope="row">Tipo</th>
+							<td>${vino.tipo}</td>
 						</tr>
-					</thead>
-					<tr>
-						<th scope="row">Tipo</th>
-						<td>${vino.tipo}</td>
-					</tr>
-					<tr>
-						<th scope="row">Anno</th>
-						<td>${vino.anno}</td>
-					</tr>
-					<tr>
-						<th scope="row">Prezzo</th>
-						<td>${vino.prezzo}euro</td>
-					</tr>
-				</table>
+						<tr>
+							<th scope="row">Anno</th>
+							<td>${vino.anno}</td>
+						</tr>
+						<tr>
+							<th scope="row">Prezzo</th>
+							<td>${vino.prezzo}euro</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col">
+					<form action="ServletCarrello" method="get">
+						<button type="submit">Aggiungi al carrello</button>
+					</form>
+				</div>
+				<div class="col">
+					<c:if test="${message != null}">
+						<p class="message">${message}</p>
+					</c:if>
+					<c:if test="${error != null}">
+						<div>
+							<p class="error">${error}</p>
+
+						</div>
+					</c:if>
+				</div>
 			</div>
 
 		</div>
-		<div class="row">
-			<div class="col">
-				<form action="ServletCarrello" method="get">
-					<button type="submit">Aggiungi al carrello</button>
-				</form>
-			</div>
-			<div class="col">
-				<c:if test="${message != null}">
-					<p class="message">${message}</p>
-				</c:if>
-				<c:if test="${error != null}">
-					<div>
-						<p class="error">${error}</p>
 
-					</div>
-				</c:if>
+
+		<hr>
+		<div class="col">
+			<div id="dropId">
+				<div class="btn-group"></div>
+				<div class="col">
+
+					<h1></h1>
+				</div>
 			</div>
 		</div>
-
-	</div>
-
-
-	<hr>
-	<div class="col">
-		<div id="dropId">
-			<div class="btn-group"></div>
-			<div class="col">
-				
-				<h1></h1>
-			</div>
-		</div>
-	</div>
-	<br>
+		<br>
 </body>
 </html>

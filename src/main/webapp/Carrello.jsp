@@ -32,15 +32,24 @@
 					<a href="." id="titleId">SoulWine</a>
 				</div>
 			</div>
-
 			<div class="col">
 				<c:choose>
-					<c:when test="${error}">
-            <div>
-              <p id ="errorId" class="mistake">${error}</p>"
- 	      	</div>
+					<c:when test="${user != null}">
+						<div id="dropId">
+							<div class="btn-group">
+								<button type="button" class="btn btn-secondary dropdown-toggle"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">${user.nome}</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Disconetti</a>
+								</div>
+							</div>
+							<a href="Carrello.jsp"> <img src="images/carrello.jpg"
+								title="carrello" width="14%" />
+							</a>
+						</div>
 					</c:when>
-				<c:otherwise>
+					<c:otherwise>
 						<div id="picId">
 							<a href="Userform.html"> <img src="images/omino.png"
 								title="user" width="10%" />
