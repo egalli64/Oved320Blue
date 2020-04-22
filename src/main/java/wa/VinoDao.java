@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 public class VinoDao implements Closeable {
 	private Connection conn;
-	private static final String GET_BY_PK = "select p.nome, t.nome, p.anno, p.prezzo from prodotti p join tipi t using(tipo_id) where prodotto_id=?;";
+	private static final String GET_BY_PK = "select p.nome, t.nome, p.anno, p.prezzo, p.prototto_id from prodotti p join tipi t using(tipo_id) where prodotto_id=?;";
 	private static final String GET_TYPE = "select p.nome, t.nome, p.anno, p.prezzo, p.prodotto_id from prodotti p join tipi t using(tipo_id) where p.nome=?;";
 	private static final String INSERT_DATA_SQL = "insert into acquisti(acquisto_id, utente_id, prodotto_id, data_e_ora)"
 			+ "values (?, ?, ?, ?)";
@@ -42,7 +42,7 @@ public class VinoDao implements Closeable {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), id);
+					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5));
 					return Optional.of(my);
 				}
 			}
