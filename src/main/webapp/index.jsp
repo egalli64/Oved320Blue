@@ -34,15 +34,11 @@
  	</div>
  	<div class="col">
  	    <c:choose>
- 	      <c:when test="${user != null}">
+ 	      <c:when test="${error}">
             <div>
-              <p>${user}</p>
-              <a href="Carrello.jsp">
- 	             <img src="images/carrello.jpg" title="carrello" width="14%" />
- 	         </a>  
+              <p class="mistake">${error}</p>"
  	      </div>
- 	      </c:when>
- 	      
+ 	      </c:when>      
         <c:otherwise>
             <div id="picId">
               <a href="Userform.html">
