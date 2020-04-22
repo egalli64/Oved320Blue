@@ -35,24 +35,7 @@ public class VinoDao implements Closeable {
 
 	}
 
-	public Optional<Vino> get(int id) {
-		try (Statement stmt = conn.createStatement(); //
-				PreparedStatement ps = conn.prepareStatement(GET_BY_PK)) {
-			ps.setInt(1, id);
-
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5));
-					return Optional.of(my);
-				}
-			}
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-
-		return Optional.empty();
-	}
-	
+		
 	public Optional<Vino> get(String nome) {
 		try (Statement stmt = conn.createStatement(); //
 				PreparedStatement ps = conn.prepareStatement(GET_TYPE)) {
