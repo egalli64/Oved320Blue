@@ -35,7 +35,7 @@ public class ServletAcquisti extends HttpServlet {
 			rd.forward(request, response);
 		} else {
 			try (VinoDao dao = new VinoDao(ds)) {
-				int[] lista = (int[]) session.getAttribute("carrello");
+				List<Integer> lista = (List<Integer>) session.getAttribute("carrello");
 				if (lista == null) {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 					request.setAttribute("error", "Non ci sono vini nel carrello");
@@ -44,10 +44,10 @@ public class ServletAcquisti extends HttpServlet {
 					List<Vino> carrello = new ArrayList<>();
 					for (int item : lista) {
 						carrello.add(dao.get(item).get());
-						RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-						request.setAttribute("acquisti", carrello);
-						rd.forward(request, response);
 					}
+					request.setAttribute("acquisti", carrello);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/carrello.jsp");
+					rd.forward(request, response);
 					
 				}
 
