@@ -78,6 +78,9 @@
 			</div>
 		</c:forEach>
 		<p>
+			<c:if test="${error != null}">
+			<p class="error">${error}</p>
+			</c:if>
 			totale =
 			<c:out value="${totale}" />
 		</p>
