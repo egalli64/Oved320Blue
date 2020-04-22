@@ -17,55 +17,57 @@ import javax.sql.DataSource;
 
 @WebServlet("/ServletCarrello")
 public class ServletCarrello extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Resource(name = "jdbc/blue")
-	private DataSource ds;
+    @Resource(name = "jdbc/blue")
+    private DataSource ds;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String vino = request.getParameter("vino");
-		if (session.getAttribute("user") == null) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>Effettua il login prima di procedere all'acquisto.</font>");
-			rd.include(request, response);
-		} else {
-			try (VinoDao dao = new VinoDao(ds)) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String vino = request.getParameter("vino");
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+            PrintWriter out = response.getWriter();
+            // !!!
+            request.setAttribute("error", "Effettua il login prima di procedere all'acquisto.");
+//			out.println("<c:if test="${error}"><p class="mistake">${error}</font></p>"); // JSP
+            rd.forward(request, response);
+        } else {
+            try {
+                @SuppressWarnings("unchecked")
+                List<Vino> lista = (List<Vino>) session.getAttribute("carrello");
+                if(lista == null) {
+                    lista = new ArrayList<Vino>();
+                }
 
-				if (session.getAttribute("carrello") instanceof List<?>) {
-					List<Vino> lista = (List<Vino>) session.getAttribute("carrello");					
-					session.setAttribute("carrello", dao.carrello(vino, lista) );
-					//to carrello.jsp
-					RequestDispatcher rdc = getServletContext().getRequestDispatcher("/Carrello.jsp");
-					rdc.forward(request, response);
-					//to vino.jsp
-					RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
-					PrintWriter out = response.getWriter();
-					out.println("<font color=green>Vino aggiunto al carrello correttamente.</font>");
-					rdv.include(request, response);
-				}
-				else {
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
-					PrintWriter out = response.getWriter();
-					out.println("<font color=red>Qualcosa è andato storto.</font>");
-					rd.include(request, response);
-				}
-			}
-		}
+                Vino item = new Vino();
+                lista.add(item);
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+                session.setAttribute("carrello", lista);
+                // to vino.jsp
+                RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
+                // PrintWriter out = response.getWriter();
+                // out.println("<font color=green>Vino aggiunto al carrello correttamente.</font>");
+                rdv.forward(request, response);
+            } catch (Exception e) {
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
+                PrintWriter out = response.getWriter();
+                out.println("<font color=red>Qualcosa è andato storto.</font>");
+                e.printStackTrace(); // log
+                rd.forward(request, response);
+            }
+        }
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }
