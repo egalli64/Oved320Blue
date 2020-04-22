@@ -41,7 +41,7 @@
 				<c:choose>
  	      			<c:when test="${user != null}">
             <div>
-              <p>${user}</p>
+              <p>${user.nome}</p>
               		<a href="Carrello.jsp">
  	             <img src="images/carrello.jpg" title="carrello" width="14%" />
  	         		</a>  
@@ -107,6 +107,24 @@
 		<div id="dropId">
 			<div class="btn-group"></div>
 			<div class="col">
+			<c:choose>
+ 	      			<c:when test="${message != null}">
+            <div>
+              <p>${message}</p>
+              		  
+ 	      	</div>
+ 	      			</c:when>
+					
+				</c:choose>
+				<c:choose>
+ 	      			<c:when test="${error != null}">
+            <div>
+              <p>${error}</p>
+              		  
+ 	      	</div>
+ 	      			</c:when>
+					
+				</c:choose>
 				<h1></h1>
 			</div>
 		</div>

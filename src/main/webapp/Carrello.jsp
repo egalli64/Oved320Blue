@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ciao ${vino.nome}</title>
+<title>Carrello</title>
 <base href="/blue/">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -57,7 +57,7 @@
 	<hr>
 	<div class="container fluid">
 		<c:set var="totale" value="0" />
-		<c:forEach var="vino" items="${carrello}">
+		<c:forEach var="vino" items="${acquisti}">
 			<div class="row">
 				<div class="col">
 					<c:out value="${vino.nome}" />

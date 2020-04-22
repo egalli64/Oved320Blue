@@ -36,7 +36,7 @@
  	    <c:choose>
  	      <c:when test="${user != null}">
             <div>
-              <p>${user}</p>
+              <p>${user.nome}</p>
               <a href="Carrello.jsp">
  	             <img src="images/carrello.jpg" title="carrello" width="14%" />
  	         </a>  
