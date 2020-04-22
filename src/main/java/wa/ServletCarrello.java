@@ -1,7 +1,6 @@
 package wa;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +25,6 @@ public class ServletCarrello extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String vino = request.getParameter("vino");
 		if (session.getAttribute("user") == null) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 			request.setAttribute("error", "Effettua il login prima di procedere all'acquisto.");
@@ -38,19 +36,14 @@ public class ServletCarrello extends HttpServlet {
 				List<Integer> lista = (List<Integer>) session.getAttribute("carrello");
 				if (lista == null) {
 					lista = new ArrayList<Integer>();
-				}
-
-				String parametro = request.getParameter("vino");
-				VinoDao dao = new VinoDao(ds);
-				Optional<Vino> opt = dao.get(parametro);
-				Vino item = opt.get();
+				}	
+				Vino item = (Vino) session.getAttribute("vino");
 				lista.add(item.getId());
-
 				session.setAttribute("carrello", lista);
-
 				RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
 				request.setAttribute("message", "Vino aggiunto al carrello");
 				rdv.forward(request, response);
+				
 			} catch (Exception e) {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
 				request.setAttribute("error", "Qualcosa è andato storto");
