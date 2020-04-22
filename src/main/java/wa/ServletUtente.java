@@ -3,6 +3,7 @@ package wa;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 import javax.naming.Context;
@@ -53,15 +54,14 @@ public class ServletUtente extends HttpServlet {
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 
-		try (UtenteDao dao = new UtenteDao(ds)) {		
-		
+		try (UtenteDao dao = new UtenteDao(ds)) {					
 
 		if (dao.get(user, password).isPresent()) {
+			Utente utente = dao.get(user, password).get();
 			HttpSession session = request.getSession();
-			session.setAttribute(user, password);
-			request.setAttribute("user", user);
-			request.setAttribute("password", password);
-
+			session.setAttribute("user", utente);
+			request.setAttribute("user", utente);
+			
 			// setting session to expiry in 30 mins
 			session.setMaxInactiveInterval(30 * 60);
 			Cookie userName = new Cookie("user", user);
