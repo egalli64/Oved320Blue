@@ -37,10 +37,14 @@ public class ServletCarrello extends HttpServlet {
 				if (session.getAttribute("carrello") instanceof List<?>) {
 					List<Vino> lista = (List<Vino>) session.getAttribute("carrello");					
 					session.setAttribute("carrello", dao.carrello(vino, lista) );
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
+					//to carrello.jsp
+					RequestDispatcher rdc = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					rdc.forward(request, response);
+					//to vino.jsp
+					RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
 					PrintWriter out = response.getWriter();
 					out.println("<font color=green>Vino aggiunto al carrello correttamente.</font>");
-					rd.include(request, response);
+					rdv.include(request, response);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
