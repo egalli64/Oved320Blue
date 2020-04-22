@@ -16,6 +16,8 @@ import javax.sql.DataSource;
 public class VinoDao implements Closeable {
 	private Connection conn;
 	private static final String GET_TYPE = "select p.nome, t.nome, p.anno, p.prezzo from prodotti p join tipi t using(tipo_id) where p.nome=?;";
+	private static final String INSERT_DATA_SQL = "insert into acquisti(acquisto_id, utente_id, prodotto_id, data_e_ora)"
+			+ "values (?, ?, ?, ?)";
 
 	public VinoDao(DataSource ds) {
 
@@ -51,7 +53,7 @@ public class VinoDao implements Closeable {
 	}
 
 	public List<Vino> carrello(String vino, List<Vino> carrello) {
-		
+
 		try (Statement stmt = conn.createStatement(); //
 				PreparedStatement ps = conn.prepareStatement(GET_TYPE)) {
 			ps.setString(1, vino);
@@ -71,4 +73,17 @@ public class VinoDao implements Closeable {
 		return carrello;
 	}
 
+	public void insertData(int acquisto_id, int utente_id, int prodotto_id, double data_e_ora) {
+		try (Statement stmt = conn.createStatement(); //
+				PreparedStatement ps = conn.prepareStatement(INSERT_DATA_SQL)) {
+			ps.setInt(1, acquisto_id);
+			ps.setInt(2, utente_id);
+			ps.setInt(3, prodotto_id);
+			ps.setDouble(4, data_e_ora);
+
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+
+	}
 }

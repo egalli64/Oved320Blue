@@ -21,7 +21,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="./css/index.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 	<br>
@@ -42,7 +42,7 @@
 					<c:when test="${user != null}">
 						<div>
 							<p>${user}</p>
-							<a href="/Carrello.html"> <img src="./images/carrello.jpg"
+							<a href="Carrello.jsp"> <img src="images/carrello.jpg"
 								title="carrello" width="14%" />
 							</a>
 						</div>
@@ -50,9 +50,9 @@
 
 					<c:otherwise>
 						<div id="picId">
-							<a href="./Userform.html"> <img src="./images/omino.png"
+							<a href="Userform.html"> <img src="images/omino.png"
 								title="user" width="10%" />
-							</a> <a href="/Carrello.html"> <img src="./images/carrello.jpg"
+							</a> <a href="Carrello.jsp"> <img src="images/carrello.jpg"
 								title="carrello" width="14%" />
 							</a>
 						</div>
@@ -71,7 +71,7 @@
 
 		<div class="row">
 			<div class="col">
-				<img src="./images/${vino.nome}.jpg" width='30%'>
+				<img src="images/${vino.nome}.jpg" width='30%'>
 			</div>
 			<div class="col">
 				<table class="table table-hover">
