@@ -39,14 +39,14 @@
 			</div>
 			<div class="col">
 				<c:choose>
- 	      			<c:when test="${user != null}">
-            <div>
-              <p>${user.nome}</p>
-              		<a href="Carrello.jsp">
- 	             <img src="images/carrello.jpg" title="carrello" width="14%" />
- 	         		</a>  
- 	      	</div>
- 	      			</c:when>
+					<c:when test="${user != null}">
+						<div>
+							<p>${user.nome}</p>
+							<a href="Carrello.jsp"> <img src="images/carrello.jpg"
+								title="carrello" width="14%" />
+							</a>
+						</div>
+					</c:when>
 					<c:otherwise>
 						<div id="picId">
 							<a href="Userform.html"> <img src="images/omino.png"
@@ -95,36 +95,34 @@
 			</div>
 
 		</div>
+		<div class="row">
+			<div class="col">
+				<form action="ServletCarrello" method="get">
+					<button type="submit">Aggiungi al carrello</button>
+				</form>
+			</div>
+			<div class="col">
+				<c:if test="${message != null}">
+					<p class="message">${message}</p>
+				</c:if>
+				<c:if test="${error != null}">
+					<div>
+						<p class="error">${error}</p>
 
+					</div>
+				</c:if>
+			</div>
+		</div>
 
 	</div>
 
-	<form action="ServletCarrello" method="get">
-		<button type="submit">Aggiungi al carrello</button>
-	</form>
+
 	<hr>
 	<div class="col">
 		<div id="dropId">
 			<div class="btn-group"></div>
 			<div class="col">
-			<c:choose>
- 	      			<c:when test="${message != null}">
-            <div>
-              <p>${message}</p>
-              		  
- 	      	</div>
- 	      			</c:when>
-					
-				</c:choose>
-				<c:choose>
- 	      			<c:when test="${error != null}">
-            <div>
-              <p>${error}</p>
-              		  
- 	      	</div>
- 	      			</c:when>
-					
-				</c:choose>
+				
 				<h1></h1>
 			</div>
 		</div>
