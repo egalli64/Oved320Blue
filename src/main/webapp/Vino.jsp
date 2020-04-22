@@ -101,7 +101,7 @@
 
 	</div>
 
-	<form action="/ServletCarrello" method="get">
+	<form action="ServletCarrello" method="get">
 		<button type="submit">Aggiungi al carrello</button>
 	</form>
 	<hr>
