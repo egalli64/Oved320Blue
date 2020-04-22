@@ -39,9 +39,8 @@ public class ServletVino extends HttpServlet {
 				rs.forward(request, response);
 			} else {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-				PrintWriter out = response.getWriter();
-				out.println("<font color=red>vino non trovato.</font>");
-				rd.include(request, response);
+				request.setAttribute("error", "Il vino cercato non è presente nella nostra cantina");
+				rd.forward(request, response);
 			}
 		}
 
