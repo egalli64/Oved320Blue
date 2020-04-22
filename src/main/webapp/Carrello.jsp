@@ -32,7 +32,7 @@
 					<a href="." id="titleId">SoulWine</a>
 				</div>
 			</div>
-			
+
 			<div class="col">
 				<c:choose>
 					<c:when test="${user != null}">
@@ -61,20 +61,28 @@
 	<hr>
 	<div class="container fluid">
 		<c:set var="totale" value="0" />
-		<%-- <c:forEach var="vini" items="${carrello.vino}">
+		<c:forEach var="vino" items="${carrello}">
 			<div class="row">
 				<div class="col">
 					<c:out value="${vino.nome}" />
 				</div>
 				<div class="col">
-				<c:set var="totale" value='${totale+vino.prezzo}'/>
-					<c:out value="${vino.prezzo}"/>
+					<c:set var="totale" value='${totale+vino.prezzo}' />
+					<c:out value="${vino.prezzo}" />
 				</div>
-				</div>
-		</c:forEach> 
-		<p> totale = <c:out value="${totale}"/></p>
-		</div>		--%>
-		<c:forEach var="vini" begin="1" end="5">
+			</div>
+		</c:forEach>
+		<p>
+			totale =
+			<c:out value="${totale}" />
+		</p>
+	</div>
+
+	<div class="container fluid">
+		<a href="index.jsp">Continua con gli acquisti!</a>
+	</div>
+
+	<%-- <c:forEach var="vini" begin="1" end="5">
 			<div class="row">
 				<div class="col">
 					<c:out value="${vini}" />
@@ -87,7 +95,7 @@
 		</c:forEach>
 		<p>
 			totale = <c:out value="${totale}" />
-		</p>
+		</p> --%>
 	</div>
 
 

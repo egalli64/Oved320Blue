@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ciao ${vino.nome} </title>
+<title>ciao ${vino.nome}</title>
 <base href="/blue/">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -91,7 +91,7 @@
 					</tr>
 					<tr>
 						<th scope="row">Prezzo</th>
-						<td>${vino.prezzo} euro</td>
+						<td>${vino.prezzo}euro</td>
 					</tr>
 				</table>
 			</div>
@@ -101,12 +101,13 @@
 
 	</div>
 
-<button type="submit">Aggiungi al carrello</button>
-
+	<form action="/ServletCarrello" method="get">
+		<button type="submit">Aggiungi al carrello</button>
+	</form>
 	<hr>
 	<div class="col">
 		<div id="dropId">
-			<div class="btn-group"></div> 
+			<div class="btn-group"></div>
 			<div class="col">
 				<h1></h1>
 			</div>
