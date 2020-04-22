@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 public class VinoDao implements Closeable {
 	private Connection conn;
 	private static final String GET_BY_PK = "select p.nome, t.nome, p.anno, p.prezzo from prodotti p join tipi t using(tipo_id) where prodotto_id=?;";
-	private static final String GET_TYPE = "select p.nome, t.nome, p.anno, p.prezzo from prodotti p join tipi t using(tipo_id) where p.nome=?;";
+	private static final String GET_TYPE = "select p.nome, t.nome, p.anno, p.prezzo, p.prodotto_id from prodotti p join tipi t using(tipo_id) where p.nome=?;";
 	private static final String INSERT_DATA_SQL = "insert into acquisti(acquisto_id, utente_id, prodotto_id, data_e_ora)"
 			+ "values (?, ?, ?, ?)";
 
@@ -42,7 +42,7 @@ public class VinoDao implements Closeable {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4));
+					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), id);
 					return Optional.of(my);
 				}
 			}
@@ -60,7 +60,7 @@ public class VinoDao implements Closeable {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4));
+					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5));
 					return Optional.of(my);
 				}
 			}
@@ -71,26 +71,7 @@ public class VinoDao implements Closeable {
 		return Optional.empty();
 	}
 
-	public List<Vino> carrello(String vino, List<Vino> carrello) {
-
-		try (Statement stmt = conn.createStatement(); //
-				PreparedStatement ps = conn.prepareStatement(GET_TYPE)) {
-			ps.setString(1, vino);
-
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4));
-					carrello.add(my);
-				}
-				return carrello;
-
-			}
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-
-		return carrello;
-	}
+	
 
 	public void insertData(int acquisto_id, int utente_id, int prodotto_id, double data_e_ora) {
 		try (Statement stmt = conn.createStatement(); //
