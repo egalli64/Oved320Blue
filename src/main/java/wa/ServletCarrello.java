@@ -26,7 +26,7 @@ public class ServletCarrello extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user") == null) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
 			request.setAttribute("error", "Effettua il login prima di procedere all'acquisto.");
 //			out.println("<c:if test="${error}"><p class="mistake">${error}</font></p>"); // JSP
 			rd.forward(request, response);
