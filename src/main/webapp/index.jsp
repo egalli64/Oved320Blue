@@ -55,18 +55,18 @@
 									<a class="dropdown-item" href="#">Disconetti</a>
 								</div>
 							</div>
-							<a href="ServletCarrello"> <img src="images/carrello.jpg"
+							<a href="ServletAcquisti"> <img src="images/carrello.jpg"
 								title="carrello" width="14%" />
 							</a>
 						</div>
 					</c:when>
         <c:otherwise>
             <div id="picId">
-              <a href="Userform.html">
+              <a href="Userform.jsp">
               <img src="images/omino.png" title="user" width="10%" />
               </a>
            
-    <a href="ServletCarrello">
+    <a href="ServletAcquisti">
  	    <img src="images/carrello.jpg" title="carrello" width="14%" />
  	</a>  
  	</div>
