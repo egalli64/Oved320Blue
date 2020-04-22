@@ -34,11 +34,19 @@ public class ServletCarrello extends HttpServlet {
 		} else {
 			try (VinoDao dao = new VinoDao(ds)) {
 
-				if (session.getAttribute("carrello") instanceof List) {
-					List<Vino> lista = new ArrayList<Vino>();
-					lista=(List<Vino>) session.getAttribute("carrello");
-					
+				if (session.getAttribute("carrello") instanceof List<?>) {
+					List<Vino> lista = (List<Vino>) session.getAttribute("carrello");					
 					session.setAttribute("carrello", dao.carrello(vino, lista) );
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/vino.jsp");
+					PrintWriter out = response.getWriter();
+					out.println("<font color=green>Vino aggiunto al carrello correttamente.</font>");
+					rd.include(request, response);
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/vino.jsp");
+					PrintWriter out = response.getWriter();
+					out.println("<font color=red>Qualcosa è andato storto.</font>");
+					rd.include(request, response);
 				}
 			}
 		}

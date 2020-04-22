@@ -34,13 +34,7 @@ public class ServletVino extends HttpServlet {
 			if (opt.isPresent()) {
 				Vino vino = opt.get();
 				HttpSession session = request.getSession();
-				session.setAttribute("nomeVino", parametro);
-				session.setAttribute("vino", vino);
-				request.setAttribute("nome", vino.getNome());
-				request.setAttribute("tipo", vino.getTipo());
-				request.setAttribute("anno", vino.getAnno());
-				request.setAttribute("prezzo", vino.getPrezzo());
-
+				session.setAttribute("vino", vino);				
 				RequestDispatcher rs = request.getRequestDispatcher("/Vino.jsp");
 				rs.forward(request, response);
 			} else {
