@@ -70,9 +70,10 @@ public class ServletUtente extends HttpServlet {
 			RequestDispatcher rs = request.getRequestDispatcher("/index.jsp");
 			rs.forward(request, response);
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>Username o password errati.</font>");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Userform.jsp");
+			request.setAttribute("error", "Username o password errati");
+//			PrintWriter out = response.getWriter();
+//			out.println("<font color=red>Username o password errati.</font>");
 			rd.include(request, response);
 		}
 		}
