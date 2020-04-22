@@ -46,7 +46,7 @@
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">${user.nome}</button>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="#">Disconnetti</a>
+										<a class="dropdown-item" href="ServletLogout">Disconnetti</a>
 									</div>
 								</div>
 								<a href="ServletAcquisti"> <img src="images/carrello.jpg"
