@@ -56,7 +56,7 @@
 						</c:when>
 						<c:otherwise>
 							<div id="picId">
-								<a href="Userform.html"> <img src="images/omino.png"
+								<a href="Userform.jsp"> <img src="images/omino.png"
 									title="user" width="10%" />
 								</a> <a href="ServletAcquisti"> <img src="images/carrello.jpg"
 									title="carrello" width="14%" />

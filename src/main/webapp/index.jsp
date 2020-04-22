@@ -66,7 +66,7 @@
               <img src="images/omino.png" title="user" width="10%" />
               </a>
            
-    <a href="ServletAcquisti">
+    <a href="Userform.jsp">
  	    <img src="images/carrello.jpg" title="carrello" width="14%" />
  	</a>  
  	</div>
