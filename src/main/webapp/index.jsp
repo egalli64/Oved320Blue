@@ -36,7 +36,7 @@
  	    <c:choose>
  	      <c:when test="${error}">
             <div>
-              <p class="mistake">${error}</p>"
+              <p id ="errorId" class="mistake">${error}</p>"
  	      </div>
  	      </c:when>      
         <c:otherwise>

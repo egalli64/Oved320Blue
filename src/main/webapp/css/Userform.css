@@ -27,3 +27,8 @@ h1{
 #dropId { 
 	text-align:center;
 }
+
+#errorId {
+	color: #ff0000;
+	font:50%; 
+}
