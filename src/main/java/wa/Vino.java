@@ -6,7 +6,7 @@ public class Vino {
 	private double prezzo;
 	private int anno;
 	private String tipo;
-	private int id;
+	private int prodotto_id;
 	
 	
 	public Vino() {
@@ -17,17 +17,17 @@ public class Vino {
 		this.prezzo=prezzo;
 		this.anno=anno;
 		this.tipo=tipo;
-		this.id=id;
+		this.prodotto_id=id;
 	}
 	
 	public String getNome() {
 		return nome;
 	}
 	public int getId() {
-		return id;
+		return prodotto_id;
 	}
 	public void setId(int id) {
-		this.id=id;
+		this.prodotto_id=id;
 	}
 
 	public void setNome(String nome) {
