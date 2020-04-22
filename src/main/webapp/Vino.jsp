@@ -46,7 +46,7 @@
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">${user.nome}</button>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="#">Disconetti</a>
+										<a class="dropdown-item" href="#">Disconnetti</a>
 									</div>
 								</div>
 								<a href="ServletAcquisti"> <img src="images/carrello.jpg"
@@ -68,7 +68,54 @@
 			</div>
 		</div>
 		<hr>
-
+		
+		<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<h1></h1>
+			</div>
+			<div class="col">
+				<div id="dropId">
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Vini Rossi</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="ServletVino?vino=Bonarda">Bonarda</a>
+							<a class="dropdown-item" href="ServletVino?vino=Lambrusco">Lambrusco</a>
+							<a class="dropdown-item" href="ServletVino?vino=Negroamaro">Negroamaro</a>
+						</div>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-success dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Vini Bianchi</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="ServletVino?vino=Chardonnay">Chardonnay</a>
+							<a class="dropdown-item" href="ServletVino?vino=Lugana">Lugana</a>
+							<a class="dropdown-item" href="ServletVino?vino=Vermentino">Vermentino</a>
+						</div>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-warning dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Spumanti</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="ServletVino?vino=Prosecco">Prosecco</a>
+							<a class="dropdown-item" href="ServletVino?vino=Champagne">Champagne</a>
+							<a class="dropdown-item" href="ServletVino?vino=Trento Doc">Trento
+								Doc</a>
+						</div>
+					</div>
+				</div>
+				<hr>
+			</div>
+			<div class="col">
+				<h1></h1>
+			</div>
+		</div>
+	</div>
+	<br>
 
 		<div class="container-fluid">
 			<h1>SoulWine presenta: ${vino.nome}</h1>
@@ -76,7 +123,7 @@
 
 			<div class="row">
 				<div class="col">
-					<img src="./images/${vino.nome}.jpg" width='30%'>
+					<img src="images/${vino.nome}.jpg" width='30%'>
 				</div>
 				<div class="col">
 					<table class="table table-hover">

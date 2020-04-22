@@ -44,9 +44,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 			</div>
 			<div class="col">
 				<div id="picId">
-					<a href="Userform.html"> <img src="images/omino.png"
+					<a href="Userform.jsp"> <img src="images/omino.png"
 						title="user" width="10%" />
-					</a> <a href="Carrello.jsp"> <img src="images/carrello.jpg"
+					</a> <a href="Userform.jsp"> <img src="images/carrello.jpg"
 						title="carrello" width="14%" />
 					</a>
 				</div>
