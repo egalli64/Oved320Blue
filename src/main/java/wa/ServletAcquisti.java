@@ -35,18 +35,19 @@ public class ServletAcquisti extends HttpServlet {
 			rd.forward(request, response);
 		} else {
 			try (VinoDao dao = new VinoDao(ds)) {
+				@SuppressWarnings("unchecked")
 				List<Integer> lista = (List<Integer>) session.getAttribute("carrello");
 				if (lista == null) {
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Carrello.jsp");
 					request.setAttribute("error", "Non ci sono vini nel carrello");
 					rd.forward(request, response);
 				} else {
-					List<Vino> carrello = new ArrayList<>();
-					for (int item : lista) {
-						carrello.add(dao.get(item).get());
-					}
-					request.setAttribute("acquisti", carrello);
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/carrello.jsp");
+//					List<Vino> carrello = new ArrayList<>();
+//					for (int item : lista) {
+//						carrello.add(dao.get(item).get());
+//					}
+					request.setAttribute("acquisti", lista);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Carrello.jsp");
 					rd.forward(request, response);
 					
 				}

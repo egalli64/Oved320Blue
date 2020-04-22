@@ -33,12 +33,12 @@ public class ServletCarrello extends HttpServlet {
 		} else {
 			try {
 				@SuppressWarnings("unchecked")
-				List<Integer> lista = (List<Integer>) session.getAttribute("carrello");
+				List<Vino> lista = (List<Vino>) session.getAttribute("carrello");
 				if (lista == null) {
-					lista = new ArrayList<Integer>();
+					lista = new ArrayList<Vino>();
 				}	
 				Vino item = (Vino) session.getAttribute("vino");
-				lista.add(item.getId());
+				lista.add(item);
 				session.setAttribute("carrello", lista);
 				RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
 				request.setAttribute("message", "Vino aggiunto al carrello");
