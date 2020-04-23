@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -37,39 +37,39 @@
 					<form class="form-inline"></form>
 				</nav>
 			</div>
-				<div class="col">
-					<c:choose>
-						<c:when test="${user != null}">
-							<div id="dropId">
-								<div class="btn-group">
-									<button type="button" class="btn btn-secondary dropdown-toggle"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">${user.nome}</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="ServletLogout">Disconnetti</a>
-									</div>
+			<div class="col">
+				<c:choose>
+					<c:when test="${user != null}">
+						<div id="dropId">
+							<div class="btn-group">
+								<button type="button" class="btn btn-secondary dropdown-toggle"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">${user.nome}</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="ServletLogout">Disconnetti</a>
 								</div>
-								<a href="ServletAcquisti"> <img src="images/carrello.jpg"
-									title="carrello" width="14%" />
-								</a>
 							</div>
-						</c:when>
-						<c:otherwise>
-							<div id="picId">
-								<a href="Userform.jsp"> <img src="images/omino.png"
-									title="user" width="10%" />
-								</a> <a href="ServletAcquisti"> <img src="images/carrello.jpg"
-									title="carrello" width="14%" />
-								</a>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</div>
+							<a href="ServletAcquisti"> <img src="images/carrello.jpg"
+								title="carrello" width="14%" />
+							</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div id="picId">
+							<a href="Userform.jsp"> <img src="images/omino.png"
+								title="user" width="10%" />
+							</a> <a href="ServletAcquisti"> <img src="images/carrello.jpg"
+								title="carrello" width="14%" />
+							</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
-		<hr>
-		
-		<div class="container-fluid">
+	</div>
+	<hr>
+
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col">
 				<h1></h1>
@@ -117,70 +117,86 @@
 	</div>
 	<br>
 
-		<div class="container-fluid">
-			<h1>SoulWine presenta: ${vino.nome}</h1>
+	<div class="container-fluid">
+		<h1>SoulWine presenta: ${vino.nome}</h1>
 
 
-			<div class="row">
-				<div class="col">
-					<img src="images/${vino.nome}.jpg" width='30%'>
-				</div>
-				<div class="col">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">/</th>
-								<th scope="col">Specifiche</th>
-							</tr>
-						</thead>
-						<tr>
-							<th scope="row">Tipo</th>
-							<td>${vino.tipo}</td>
-						</tr>
-						<tr>
-							<th scope="row">Anno</th>
-							<td>${vino.anno}</td>
-						</tr>
-						<tr>
-							<th scope="row">Prezzo</th>
-							<td>${vino.prezzo}euro</td>
-						</tr>
-					</table>
-				</div>
-
+		<div class="row">
+			<div class="col">
+				<img src="images/${vino.nome}.jpg" width='30%'>
 			</div>
-			<div class="row">
-				<div class="col">
+			<div class="col">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">/</th>
+							<th scope="col">Specifiche</th>
+						</tr>
+					</thead>
+					<tr>
+						<th scope="row">Tipo</th>
+						<td>${vino.tipo}</td>
+					</tr>
+					<tr>
+						<th scope="row">Anno</th>
+						<td>${vino.anno}</td>
+					</tr>
+					<tr>
+						<th scope="row">Prezzo</th>
+						<td>${vino.prezzo} € </td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col">
+				<c:if test="${vino.stock < 1 }">
+					<p>esaurito</p>
+				</c:if>
+				<c:if test="${vino.stock >= 1 }">
 					<form action="ServletCarrello" method="get">
-						<button type="submit">Aggiungi al carrello</button>
-					</form>
-				</div>
-				<div class="col">
-					<c:if test="${message != null}">
-						<p class="message">${message}</p>
-					</c:if>
-					<c:if test="${error != null}">
 						<div>
-							<p class="error">${error}</p>
+								<c:forEach items="${lista}" var="i" begin="1" end="${vino.stock}">
+							<select name="stock">
+								<option> ${i} </option>
+							</select>
+								</c:forEach>
+							
 
+						<input type="submit" value="Aggiungi al carrello"></input>
 						</div>
-					</c:if>
-				</div>
-			</div>
+					</form>
+				</c:if>
 
+
+			</div>
+			<div class="col">
+				<c:if test="${message != null}">
+					<p class="message">${message}</p>
+				</c:if>
+				<c:if test="${error != null}">
+					<div>
+						<p class="error">${error}</p>
+
+					</div>
+				</c:if>
+			</div>
 		</div>
 
+	</div>
 
-		<hr>
-		<div class="col">
-			<div id="dropId">
-				<div class="btn-group"></div>
-				<div class="col">
 
-					<h1></h1>
-				</div>
+	<hr>
+	<div class="col">
+		<div id="dropId">
+			<div class="btn-group"></div>
+			<div class="col">
+
+				<h1></h1>
 			</div>
 		</div>
-		<br>
+	</div>
+	<br>
 </body>
 </html>
