@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -102,6 +102,35 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 				<c:if test="${error != null}">
 					<p class="error">${error}</p>
 				</c:if>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<hr>
+				<h6>Amministratore</h6>
+				<hr>
+				<form action="ServletAccessoAdministrator" method="post">
+
+					<div>
+						Nome: <br> <input type="text" name="admin">
+					</div>
+					<div>
+						Password: <br> <input type="password" name="password"
+							maxlength="30" required>
+					</div>
+					<div>
+						<input type="hidden" name="invisible" value="notShowed">
+					</div>
+					<div>
+						<br> <input type="submit" value="Entra" />
+					</div>
+				</form>
+			</div>
+			<div class="col">
+			<c:if test="${error != null }"> 
+			   <p class="error"> ${error} </p>
+			</c:if>
 			</div>
 		</div>
 	</div>
