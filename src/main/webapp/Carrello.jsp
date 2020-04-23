@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -64,72 +64,48 @@
 		</div>
 	</div>
 	<hr>
-	
 	<div class="container fluid">
 		<c:set var="totale" value="0" />
-		<c:forEach var="vino" items="${acquisti}">
-			<div class="row">
-				<div class="col">
-					<c:out value="${vino.nome}" />
-				</div>
-				<div class="col">
-					<c:set var="totale" value='${totale+vino.prezzo}' />
-					<c:out value="${vino.prezzo}" />
-				</div>
-				<div class="col">
-				<div class="btn-group">
- 				 	<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    				1
-  					</button>
-  				<div class="dropdown-menu">
-    				<a class="dropdown-item" href="ServletAcquisti">1</a>
-    				<a class="dropdown-item" href="ServletAcquisti">2</a>
-    				<a class="dropdown-item" href="ServletAcquisti">3</a>
-    				<a class="dropdown-item" href="ServletAcquisti">4</a>
-    				<a class="dropdown-item" href="ServletAcquisti">5</a>
-    				<a class="dropdown-item" href="ServletAcquisti">6</a>
-    				<a class="dropdown-item" href="ServletAcquisti">7</a>
-    				<a class="dropdown-item" href="ServletAcquisti">8</a>
-    				<a class="dropdown-item" href="ServletAcquisti">9</a>
-    				<a class="dropdown-item" href="ServletAcquisti">10</a>
-    				<div class="dropdown-divider"></div>
-    				<a class="dropdown-item" href="ServletAcquisti">10+</a>
-  					</div>
-					</div>
-					</div>
-				</div>	
-		</c:forEach>
-		
-		
-		<br>
-		<p>
-			<c:if test="${error != null}">
-			<p class="error">${error}</p>
-			</c:if>
-			totale =
-			<c:out value="${totale}" />
-		</p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Items</th>
+					<th>Quantità</th>
+					<th>Prezzo</th>
+				</tr>
+			</thead>
+
+			<c:forEach var="vino" items="${acquisti}">
+				<tr>
+					<td><c:out value="${vino.nome}" /></td>
+					<td><c:out value="${vino.stock}" /></td>
+					<td><c:set var="totale" value='${totale+vino.prezzo}' />
+						<p>
+							<c:out value="${vino.prezzo*vino.stock}" />
+							€
+						</p></td>
+				</tr>
+			</c:forEach>
+			
+			<tr>
+			<td><c:if test="${error != null}">
+					<p class="error">${error}</p>
+				</c:if></td>
+				<th></th>
+				<th>
+				<p>	Totale = <c:out value="${totale}" />	€</p>
+				</th>
+			</tr>
+		</table>
+
 	</div>
 
 	<div class="container fluid">
 		<a href="index.jsp">Continua con gli acquisti!</a>
 	</div>
 
-	<%-- <c:forEach var="vini" begin="1" end="5">
-			<div class="row">
-				<div class="col">
-					<c:out value="${vini}" />
-				</div>
-				<div class="col">
-					<c:set var="totale" value='${totale+vini}' />
-					<c:out value="${vini+3}" />
-				</div>
-			</div>
-		</c:forEach>
-		<p>
-			totale = <c:out value="${totale}" />
-		</p> --%>
-	
+
+	</div>
 
 
 </body>
