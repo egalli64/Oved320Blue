@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-admin connected
+<p> benvenuto: ${admin} </p> 
 </body>
 </html>
