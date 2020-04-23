@@ -39,6 +39,7 @@ public class ServletCarrello extends HttpServlet {
 				}	
 			    int order = Integer.parseInt(request.getParameter("order"));
 				Vino item =(Vino) session.getAttribute("vino");
+				item.updateStock(order, item.getId());
 				item.setOrdini(order);
 				lista.add(item);
 				session.setAttribute("carrello", lista);
