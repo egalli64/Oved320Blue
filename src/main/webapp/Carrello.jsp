@@ -64,6 +64,7 @@
 		</div>
 	</div>
 	<hr>
+	
 	<div class="container fluid">
 		<c:set var="totale" value="0" />
 		<c:forEach var="vino" items="${acquisti}">
@@ -75,8 +76,32 @@
 					<c:set var="totale" value='${totale+vino.prezzo}' />
 					<c:out value="${vino.prezzo}" />
 				</div>
-			</div>
+				<div class="col">
+				<div class="btn-group">
+ 				 	<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    				1
+  					</button>
+  				<div class="dropdown-menu">
+    				<a class="dropdown-item" href="ServletAcquisti">1</a>
+    				<a class="dropdown-item" href="ServletAcquisti">2</a>
+    				<a class="dropdown-item" href="ServletAcquisti">3</a>
+    				<a class="dropdown-item" href="ServletAcquisti">4</a>
+    				<a class="dropdown-item" href="ServletAcquisti">5</a>
+    				<a class="dropdown-item" href="ServletAcquisti">6</a>
+    				<a class="dropdown-item" href="ServletAcquisti">7</a>
+    				<a class="dropdown-item" href="ServletAcquisti">8</a>
+    				<a class="dropdown-item" href="ServletAcquisti">9</a>
+    				<a class="dropdown-item" href="ServletAcquisti">10</a>
+    				<div class="dropdown-divider"></div>
+    				<a class="dropdown-item" href="ServletAcquisti">10+</a>
+  					</div>
+					</div>
+					</div>
+				</div>	
 		</c:forEach>
+		
+		
+		<br>
 		<p>
 			<c:if test="${error != null}">
 			<p class="error">${error}</p>
@@ -104,7 +129,7 @@
 		<p>
 			totale = <c:out value="${totale}" />
 		</p> --%>
-	</div>
+	
 
 
 </body>
