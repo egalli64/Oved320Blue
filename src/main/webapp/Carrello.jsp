@@ -79,21 +79,26 @@
 				<tr>
 					<td><c:out value="${vino.nome}" /></td>
 					<td><c:out value="${vino.ordini}" /></td>
-					<td><c:set var="totale" value='${totale+vino.prezzo*vino.ordini}' />
+					<td><c:set var="totale"
+							value='${totale+vino.prezzo*vino.ordini}' />
 						<p>
 							<c:out value="${vino.prezzo*vino.ordini}" />
 							€
 						</p></td>
 				</tr>
 			</c:forEach>
-			
+
 			<tr>
-			<th><c:if test="${error != null}">
-					<p class="error">${error}</p>
-				</c:if></th>
+				<th><c:if test="${error != null}">
+						<p class="error">${error}</p>
+					</c:if></th>
 				<th></th>
 				<th>
-				<p>	Totale = <c:out value="${totale}" />	€</p>
+					<p>
+						Totale =
+						<c:out value="${totale}" />
+						€
+					</p>
 				</th>
 			</tr>
 		</table>
@@ -103,6 +108,18 @@
 	<div class="container fluid">
 		<a href="index.jsp">Continua con gli acquisti!</a>
 	</div>
+
+
+	<div class="container fluid">
+		<form action="ServletBuy" method="get">
+			<input type="submit" value="Procedi con l'acquisto"></input>
+		</form>
+	</div>
+	<div class="col">
+				<c:if test="${message != null}">
+					<p class="message">${message}</p>
+				</c:if>
+				</div>
 
 
 	</div>
