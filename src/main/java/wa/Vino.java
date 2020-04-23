@@ -7,17 +7,27 @@ public class Vino {
 	private int anno;
 	private String tipo;
 	private int prodotto_id;
+	private int stock;
 	
 	
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
 	public Vino() {
 		}
 	
-	public Vino(String nome, String tipo, int anno, double prezzo, int id ) {
+	public Vino(String nome, String tipo, int anno, double prezzo, int id, int stock) {
 		this.nome=nome;
 		this.prezzo=prezzo;
 		this.anno=anno;
 		this.tipo=tipo;
 		this.prodotto_id=id;
+		this.stock=stock;
 	}
 	
 	public String getNome() {

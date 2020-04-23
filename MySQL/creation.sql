@@ -21,17 +21,18 @@ nome varchar(20),
 prezzo decimal(4,2) , 
 anno int, 
 tipo_id int,
-foreign key (tipo_id) references tipi(tipo_id));
+foreign key (tipo_id) references tipi(tipo_id),
+stock int);
 
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Bonarda',15.00 , 2020, 1);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Lambrusco',15.00, 2019, 1);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Negroamaro',18.00 ,2019, 1);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Chardonnay',18.00, 2019, 2);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Lugana', 19.00, 2018, 2);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Vermentino',20.00, 2018, 2);
-insert into prodotti(nome,prezzo, anno, tipo_id) value('Prosecco', 22.00, 2018, 3);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('Champagne',28.00, 2019, 3);
-insert into prodotti(nome, prezzo, anno, tipo_id) value('TrentoDoc', 28.00, 2018, 3);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Bonarda',15.00 , 2020, 1, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Lambrusco',15.00, 2019, 1, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock ) value('Negroamaro',18.00 ,2019, 1, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Chardonnay',18.00, 2019, 2, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Lugana', 19.00, 2018, 2, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Vermentino',20.00, 2018, 2, 10);
+insert into prodotti(nome,prezzo, anno, tipo_id, stock) value('Prosecco', 22.00, 2018, 3, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('Champagne',28.00, 2019, 3, 10);
+insert into prodotti(nome, prezzo, anno, tipo_id, stock) value('TrentoDoc', 28.00, 2018, 3, 10);
 
 create table utenti(
 utente_id integer primary key auto_increment,
