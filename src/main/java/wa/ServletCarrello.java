@@ -2,8 +2,9 @@ package wa;
 
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -33,25 +34,26 @@ public class ServletCarrello extends HttpServlet {
 		} else {
 			try {
 				@SuppressWarnings("unchecked")
-				List<Vino> lista = (List<Vino>) session.getAttribute("carrello");
-				if (lista == null) {
-					lista = new ArrayList<Vino>();
+				Set<Vino> set = (Set<Vino>) session.getAttribute("carrello");
+				if (set == null) {
+					set = new HashSet<Vino>();
 				}	
 			    int order = Integer.parseInt(request.getParameter("order"));
 				Vino item = (Vino) session.getAttribute("vino");
-				try (VinoDao dao = new VinoDao(ds)){
-				dao.updateStock(order, item.getId(), item);}
+				//try (VinoDao dao = new VinoDao(ds)){
+				//dao.updateStock(order, item.getId(), item);}
 				
-				item.setOrdini(order);
-				lista.add(item);
-				session.setAttribute("carrello", lista);
+				item.setOrdini(order+item.getOrdini());
+				item.setStock(item.getStock()-order);
+				set.add(item);
+				session.setAttribute("carrello", set);
 				RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
 				request.setAttribute("message", "Vino aggiunto al carrello");
 				rdv.forward(request, response);
 				
 			} catch (Exception e) {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Vino.jsp");
-				request.setAttribute("error", "Qualcosa è andato storto");
+				request.setAttribute("error", "Qualcosa Ã¨ andato storto");
 				e.printStackTrace(); // log
 				rd.forward(request, response);
 			}

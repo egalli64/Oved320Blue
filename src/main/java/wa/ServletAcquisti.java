@@ -1,7 +1,9 @@
 package wa;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -35,17 +37,26 @@ public class ServletAcquisti extends HttpServlet {
 		} else {
 			try (VinoDao dao = new VinoDao(ds)) {
 				@SuppressWarnings("unchecked")
-				List<Vino> lista = (List<Vino>) session.getAttribute("carrello");
-				if (lista == null) {
+				Set<Vino> carrello = (Set<Vino>) session.getAttribute("carrello");
+				if (carrello == null) {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Carrello.jsp");
 					request.setAttribute("error", "Non ci sono vini nel carrello");
 					rd.forward(request, response);
 				} else {
 //					List<Vino> carrello = new ArrayList<>();
-//					for (int item : lista) {
-//						carrello.add(dao.get(item).get());
-//					}
-					request.setAttribute("acquisti", lista);
+			/*		List<Vino> carrello= new ArrayList<Vino>();
+					for (int j=0; j<lista.size(); j++) {
+						Vino item= lista.get(j);
+						int count=item.getOrdini();
+						for (int i=j+1; i<lista.size(); i++) {
+							if(lista.get(i).getId()==item.getId()) {
+								count=+lista.get(i).getOrdini();
+								item.setOrdini(count);
+							}
+						}
+						carrello.add(item);
+					}*/
+					request.setAttribute("acquisti", carrello);
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Carrello.jsp");
 					rd.forward(request, response);
 					
