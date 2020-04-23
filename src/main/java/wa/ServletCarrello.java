@@ -1,9 +1,9 @@
 package wa;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -37,7 +37,9 @@ public class ServletCarrello extends HttpServlet {
 				if (lista == null) {
 					lista = new ArrayList<Vino>();
 				}	
+			    int stock = (int) request.getAttribute("stock");
 				Vino item = (Vino) session.getAttribute("vino");
+				item.setStock(stock);
 				lista.add(item);
 				session.setAttribute("carrello", lista);
 				RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");
