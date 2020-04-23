@@ -88,9 +88,9 @@
 			</c:forEach>
 			
 			<tr>
-			<td><c:if test="${error != null}">
+			<th><c:if test="${error != null}">
 					<p class="error">${error}</p>
-				</c:if></td>
+				</c:if></th>
 				<th></th>
 				<th>
 				<p>	Totale = <c:out value="${totale}" />	€</p>
