@@ -17,6 +17,7 @@ public class VinoDao implements Closeable {
 	private static final String GET_BY_NAME = "select p.nome, t.nome, p.anno, p.prezzo, p.prodotto_id, p.stock from prodotti p join tipi t using(tipo_id) where p.nome=?;";
 	private static final String INSERT_DATA_SQL = "insert into acquisti(acquisto_id, utente_id, prodotto_id, data_e_ora)"
 			+ "values (?, ?, ?, ?)";
+	private static final String UPDATE_STOCK = "update prodotti set stock=(stock-?) where prodotto_id=?";
 
 	public VinoDao(DataSource ds) {
 
@@ -41,7 +42,7 @@ public class VinoDao implements Closeable {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6));
+					Vino my = new Vino(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), 0);
 					return Optional.of(my);
 				}
 			}
@@ -52,6 +53,13 @@ public class VinoDao implements Closeable {
 		return Optional.empty();
 	}
 
+	public void updateStock(int ordine, int id) {
+		try(Statement stmt = conn.createStatement();
+				PreparedStatement ps = conn.prepareStatement(UPDATE_STOCK)){
+			ps.setInt(1, ordine);
+			ps.setInt(2, id);
+		}
+	}
 	
 
 	public void insertData(int acquisto_id, int utente_id, int prodotto_id, double data_e_ora) {

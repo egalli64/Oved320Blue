@@ -37,9 +37,9 @@ public class ServletCarrello extends HttpServlet {
 				if (lista == null) {
 					lista = new ArrayList<Vino>();
 				}	
-			    int stock = (int) request.getAttribute("stock");
-				Vino item = (Vino) session.getAttribute("vino");
-				item.setStock(stock);
+			    int order = Integer.parseInt(request.getParameter("order"));
+				Vino item =(Vino) session.getAttribute("vino");
+				item.setOrdini(order);
 				lista.add(item);
 				session.setAttribute("carrello", lista);
 				RequestDispatcher rdv = getServletContext().getRequestDispatcher("/Vino.jsp");

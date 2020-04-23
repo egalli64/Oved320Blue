@@ -158,7 +158,7 @@
 					<form action="ServletCarrello" method="get">
 						<div>
                             <select name="order">
-    							<c:forEach var="i" begin="1" end="${vino.stock}">
+    							<c:forEach var='i' begin='1' end="${vino.stock}">
 				    				<option value="${i}"> ${i} </option>
 	          					</c:forEach>
                             </select>

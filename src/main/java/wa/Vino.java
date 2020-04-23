@@ -8,6 +8,7 @@ public class Vino {
 	private String tipo;
 	private int prodotto_id;
 	private int stock;
+	private int ordini;
 	
 	
 	public int getStock() {
@@ -21,15 +22,24 @@ public class Vino {
 	public Vino() {
 		}
 	
-	public Vino(String nome, String tipo, int anno, double prezzo, int id, int stock) {
+	public Vino(String nome, String tipo, int anno, double prezzo, int id, int stock, int ordini) {
 		this.nome=nome;
 		this.prezzo=prezzo;
 		this.anno=anno;
 		this.tipo=tipo;
 		this.prodotto_id=id;
 		this.stock=stock;
+		this.ordini=ordini;
 	}
 	
+	public int getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(int ordini) {
+		this.ordini = ordini;
+	}
+
 	public String getNome() {
 		return nome;
 	}

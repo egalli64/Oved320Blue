@@ -35,7 +35,7 @@ public class ServletAcquisti extends HttpServlet {
 		} else {
 			try (VinoDao dao = new VinoDao(ds)) {
 				@SuppressWarnings("unchecked")
-				List<Integer> lista = (List<Integer>) session.getAttribute("carrello");
+				List<Ordine> lista = (List<Ordine>) session.getAttribute("carrello");
 				if (lista == null) {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Carrello.jsp");
 					request.setAttribute("error", "Non ci sono vini nel carrello");
