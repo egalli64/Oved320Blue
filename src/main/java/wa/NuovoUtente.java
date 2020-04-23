@@ -8,9 +8,11 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 
@@ -42,7 +44,15 @@ public class NuovoUtente extends HttpServlet {
 		try (UtenteDao dao = new UtenteDao(ds)){
 		Utente ut = new Utente(user,password);
 		dao.save(ut);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", ut);
+		request.setAttribute("user", ut);
 		
+		// setting session to expiry in 30 mins
+		session.setMaxInactiveInterval(30 * 60);
+		Cookie userName = new Cookie("user", user);
+		userName.setMaxAge(30 * 60);
+		response.addCookie(userName);
 		RequestDispatcher rs = request.getRequestDispatcher("/index.jsp");
 		rs.forward(request, response);
 	}
