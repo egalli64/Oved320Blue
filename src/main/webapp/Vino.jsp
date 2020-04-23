@@ -157,14 +157,12 @@
 				<c:if test="${vino.stock >= 1 }">
 					<form action="ServletCarrello" method="get">
 						<div>
-								<c:forEach items="${lista}" var="i" begin="1" end="${vino.stock}">
-							<select name="stock">
-								<option> ${i} </option>
-							</select>
-								</c:forEach>
-							
-
-						<input type="submit" value="Aggiungi al carrello"></input>
+                            <select name="order">
+    							<c:forEach var="i" begin="1" end="${vino.stock}">
+				    				<option value="${i}"> ${i} </option>
+	          					</c:forEach>
+                            </select>
+					        <input type="submit" value="Aggiungi al carrello"></input>
 						</div>
 					</form>
 				</c:if>
