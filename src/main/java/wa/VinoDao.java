@@ -53,7 +53,7 @@ public class VinoDao implements Closeable {
 		return Optional.empty();
 	}
 
-	public void updateStock(int ordine, int id) {
+	public void updateStock(int ordine, int id) throws SQLException {
 		try(Statement stmt = conn.createStatement();
 				PreparedStatement ps = conn.prepareStatement(UPDATE_STOCK)){
 			ps.setInt(1, ordine);
