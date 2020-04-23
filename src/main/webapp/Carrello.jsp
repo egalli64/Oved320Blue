@@ -79,7 +79,7 @@
 				<tr>
 					<td><c:out value="${vino.nome}" /></td>
 					<td><c:out value="${vino.stock}" /></td>
-					<td><c:set var="totale" value='${totale+vino.prezzo}' />
+					<td><c:set var="totale" value='${totale+vino.prezzo*vino.ordini}' />
 						<p>
 							<c:out value="${vino.prezzo*vino.ordini}" />
 							€

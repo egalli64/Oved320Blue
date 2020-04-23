@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -38,8 +39,10 @@ public class ServletCarrello extends HttpServlet {
 					lista = new ArrayList<Vino>();
 				}	
 			    int order = Integer.parseInt(request.getParameter("order"));
-				Vino item =(Vino) session.getAttribute("vino");
-				item.updateStock(order, item.getId());
+				Vino item = (Vino) session.getAttribute("vino");
+				try (VinoDao dao = new VinoDao(ds)){
+				dao.updateStock(order, item.getId());}
+				
 				item.setOrdini(order);
 				lista.add(item);
 				session.setAttribute("carrello", lista);

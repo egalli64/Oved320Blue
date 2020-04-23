@@ -59,6 +59,7 @@ public class VinoDao implements Closeable {
 			ps.setInt(1, ordine);
 			ps.setInt(2, id);
 		}
+	
 	}
 	
 
