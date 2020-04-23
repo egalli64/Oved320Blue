@@ -137,7 +137,7 @@
 			<div class="carousel-item active">
 				<img src="images/uva.jpg" class="d-block w-100" width="10%">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>LA QUALITA NON E UN OPTIONAL, MA UN MUST</h5>
+					<h5>LA QUALITA' NON E' UN OPTIONAL, MA UN MUST</h5>
 					<p>I vigneti di prima qualità di cui provvengono i nostri
 						prodotti sono la dimostrazione della nostra passione</p>
 				</div>
