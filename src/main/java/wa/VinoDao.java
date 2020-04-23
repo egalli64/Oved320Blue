@@ -19,7 +19,7 @@ public class VinoDao implements Closeable {
 			+ "values (?, ?, ?, ?)";
 	private static final String UPDATE_STOCK = "update prodotti set stock=(stock-?) where prodotto_id=?";
 	private static final String INSERT_DATA_VINI = "insert into prodotti(prodotto_id, nome, prezzo, anno, tipo_id, stock)"
-			+ "values (?, ?, ?, ?, ?)";
+			+ "values (?, ?, ?, ?, ?, ?)";
 
 	public VinoDao(DataSource ds) {
 
